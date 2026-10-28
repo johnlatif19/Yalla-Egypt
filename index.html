@@ -61,9 +61,29 @@
 
   <!-- Intro Splash Screen -->
   <div id="intro-splash" class="intro-splash">
-    <div class="intro-splash__bg"></div>
-    <div class="intro-splash__logo">
-      <img src="/assets/images/logo.webp" alt="Yalla Egypt" width="120">
+    <div class="intro-splash__content">
+      
+      <svg class="intro-splash__drawing" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+        
+        <g class="draw-flag">
+          <!-- الأشرطة الثلاثة -->
+          <rect x="220" y="20" width="160" height="30" fill="rgba(255, 51, 51, 0.4)" stroke="#FF3333" stroke-width="2" class="flag-red"/>
+          <rect x="220" y="50" width="160" height="30" fill="rgba(255, 255, 255, 0.2)" stroke="#FFFFFF" stroke-width="2" class="flag-white"/>
+          <rect x="220" y="80" width="160" height="30" fill="rgba(50, 50, 50, 0.8)" stroke="#555555" stroke-width="2" class="flag-black"/>
+          
+          <image 
+            href="/assets/images/eagle-of-saladin.svg.webp" 
+            x="0" y="0" 
+            width="42" height="30" 
+            class="flag-eagle"
+            preserveAspectRatio="xMidYMid meet"
+            transform="translate(279, 50)"
+          />
+        </g>
+
+        <text x="50%" y="65%" text-anchor="middle" class="draw-text">Yalla Egypt</text>
+      </svg>
+
     </div>
   </div>
 
