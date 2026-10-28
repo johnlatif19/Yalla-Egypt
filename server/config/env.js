@@ -21,7 +21,7 @@ export const env = {
   NODE_ENV: nodeEnv,
   isProduction: nodeEnv === 'production',
   PORT: Number(optional('PORT', '3001')),
-  APP_BASE_URL: optional('APP_BASE_URL', 'http://localhost:3000'),
+  APP_BASE_URL: optional('APP_BASE_URL', 'http://yalla-egypt.com'),
 
   FIREBASE_PROJECT_ID: required('FIREBASE_PROJECT_ID'),
   FIREBASE_CLIENT_EMAIL: required('FIREBASE_CLIENT_EMAIL'),
