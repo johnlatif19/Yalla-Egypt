@@ -2,15 +2,16 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "outputDirectory": ".",
   "rewrites": [
     {
       "source": "/tours/:slug",
       "destination": "/tours/details.html"
-    },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/[...path].js"
     }
-  ]
+  ],
+  "functions": {
+    "api/[...path].js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
 }
