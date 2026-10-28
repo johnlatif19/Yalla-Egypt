@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "yalla-egypt",
   "version": "1.0.0",
   "private": true,
@@ -12,8 +12,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "server": "node server/index.js",
-    "dev:all": "concurrently \"npm run server\" \"npm run dev\"",
-    "deploy": "vercel --prod"
+    "dev:all": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
     "cors": "^2.8.5",
