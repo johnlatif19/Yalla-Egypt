@@ -14,17 +14,18 @@ import adminStatsRouter from './routes/admin/stats.js';
 
 const app = express();
 
+// السطر ده بيحل مشكلة الـ IP في Vercel
+app.set('trust proxy', 1);
+
 applySecurity(app);
 
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: false, limit: '100kb' }));
 
-// مسار الـ Health Check
 app.get('/api/health', (req, res) => {
   res.json({ ok: true });
 });
 
-// مسار إرسال إعدادات Firebase للفرونت إند
 app.get('/api/config', (req, res) => {
   res.json({
     firebase: {
