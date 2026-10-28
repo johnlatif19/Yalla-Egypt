@@ -54,6 +54,7 @@ function renderExperiences(items) {
   grid.innerHTML = '';
 
   if (!Array.isArray(items) || items.length === 0) {
+    renderStaticExperiences();
     return;
   }
 
@@ -78,6 +79,31 @@ function renderExperiences(items) {
   });
 }
 
+function renderStaticExperiences() {
+  const grid = document.getElementById('experiences-grid');
+  if (!grid) return;
+
+  // ظبطنا الصور هنا عشان تبقى للمتحف والأهرامات
+  const staticItems = [
+    { title: 'Pyramids & Ancient Wonders', desc: 'Stand before the last surviving wonder of the ancient world.', image: '/assets/images/egypt-pyramids-1.webp' },
+    { title: 'Egyptian Museum Treasures', desc: 'Explore thousands of artifacts from ancient Egypt.', image: '/assets/images/egypt-museum-1.webp' },
+    { title: 'Nile & Daily Life', desc: 'Sail the Nile and experience the rhythm of Egyptian life.', image: '/assets/images/egypt-nile.webp' }
+  ];
+
+  staticItems.forEach((item) => {
+    const article = document.createElement('article');
+    article.className = 'experience reveal';
+    article.innerHTML = `
+      <img src="${item.image}" alt="${escapeAttr(item.title)}" loading="lazy" decoding="async">
+      <div class="experience__body">
+        <h3 class="experience__title">${escapeHtml(item.title)}</h3>
+        <p class="experience__desc">${escapeHtml(item.desc)}</p>
+      </div>
+    `;
+    grid.appendChild(article);
+  });
+}
+
 function renderGallery(items) {
   const grid = document.getElementById('home-gallery-grid');
   if (!grid) return;
@@ -85,6 +111,7 @@ function renderGallery(items) {
   grid.innerHTML = '';
 
   if (!Array.isArray(items) || items.length === 0) {
+    renderStaticGallery();
     return;
   }
 
@@ -95,6 +122,35 @@ function renderGallery(items) {
     const img = document.createElement('img');
     img.src = item.secureUrl || item.url;
     img.alt = item.alt?.[document.documentElement.lang] || item.alt?.en || '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+
+    wrapper.appendChild(img);
+    grid.appendChild(wrapper);
+  });
+}
+
+function renderStaticGallery() {
+  const grid = document.getElementById('home-gallery-grid');
+  if (!grid) return;
+
+  // دي نفس الصور اللي انت ظبطتها في الاسكرين شوت
+  const staticImages = [
+    '/assets/images/egypt-museum-1.webp',
+    '/assets/images/egypt-museum-2.webp',
+    '/assets/images/egypt-pyramids-1.webp',
+    '/assets/images/egypt-hero.webp',
+    '/assets/images/egypt-food.webp',
+    '/assets/images/egypt-nile.webp'
+  ];
+
+  staticImages.forEach((src) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'gallery-item reveal';
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Egypt';
     img.loading = 'lazy';
     img.decoding = 'async';
 
@@ -171,6 +227,7 @@ async function loadHome() {
     initReveals();
   } catch (error) {
     showToast(error.message || t('common.error'), 'error');
+    initReveals();
   }
 }
 
@@ -180,6 +237,11 @@ async function init() {
   initI18n();
   mountHeader();
   mountFooter();
+  
+  // عشان نضمن إن الصور تظهر فوراً بعد الإنترو
+  renderStaticExperiences();
+  renderStaticGallery();
+  
   initReveals();
   await loadHome();
 }
