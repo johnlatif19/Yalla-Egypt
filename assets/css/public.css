@@ -705,3 +705,48 @@ html[lang="ar"] .booking-card__price {
     padding: var(--space-4);
   }
 }
+
+/* Intro Splash Screen */
+.intro-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #0A1A26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.intro-splash.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.intro-splash__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/images/hero-bg.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: splashBgFade 3.5s ease-out forwards;
+}
+
+@keyframes splashBgFade {
+  0% { opacity: 0; transform: scale(1.05); }
+  30% { opacity: 0.7; }
+  100% { opacity: 0.4; transform: scale(1); }
+}
+
+.intro-splash__logo {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: splashLogoFade 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes splashLogoFade {
+  to { opacity: 1; transform: translateY(0); }
+}
