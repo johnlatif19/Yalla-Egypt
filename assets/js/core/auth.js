@@ -4,12 +4,13 @@ let firebaseApp = null;
 let authInstance = null;
 let authModule = null;
 let authStateListeners = new Set();
+let authReadyPromise = null;
 
 async function loadFirebase() {
   if (authModule) return authModule;
 
   const firebaseConfig = await loadConfig();
-  
+
   if (!firebaseConfig || !firebaseConfig.apiKey) {
     throw new Error('Firebase client configuration is missing from server.');
   }
@@ -36,6 +37,37 @@ async function loadFirebase() {
   return authModule;
 }
 
+/**
+ * بتترجع promise بتحل أول ما Firebase يخلص تحميل الحالة الأولية.
+ * لو المستخدم مسجل، هترجع user، ولو لأ هترجع null.
+ */
+function waitForAuthReady() {
+  if (authReadyPromise) return authReadyPromise;
+
+  authReadyPromise = new Promise((resolve) => {
+    let resolved = false;
+
+    const finish = (user) => {
+      if (resolved) return;
+      resolved = true;
+      resolve(user || null);
+    };
+
+    // timeout احتياطي 8 ثواني
+    const timer = setTimeout(() => {
+      finish(authInstance?.currentUser || null);
+    }, 8000);
+
+    const unsubscribe = authModule.onAuthStateChanged(authInstance, (user) => {
+      clearTimeout(timer);
+      unsubscribe();
+      finish(user);
+    });
+  });
+
+  return authReadyPromise;
+}
+
 export async function initAuth() {
   return loadFirebase();
 }
@@ -49,6 +81,7 @@ export async function signIn(email, password) {
 export async function signOut() {
   const { signOut: fbSignOut } = await loadFirebase();
   await fbSignOut(authInstance);
+  authReadyPromise = null;
 }
 
 export function onAuthChange(callback) {
@@ -67,7 +100,18 @@ export async function getCurrentUser() {
       return null;
     }
   }
-  return authInstance?.currentUser || null;
+
+  // لو المستخدم موجود فعلاً في الـ memory، رجّعه فوراً
+  if (authInstance?.currentUser) {
+    return authInstance.currentUser;
+  }
+
+  // غير كده، استنى Firebase يخلص تحميل الحالة الأولية
+  try {
+    return await waitForAuthReady();
+  } catch {
+    return authInstance?.currentUser || null;
+  }
 }
 
 export async function getCurrentUserToken(forceRefresh = false) {
