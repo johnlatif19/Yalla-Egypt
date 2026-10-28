@@ -1,9 +1,5 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = resolve(__filename, '..');
 
 export default defineConfig({
   root: '.',
@@ -12,19 +8,19 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        tours: resolve(__dirname, 'tours/index.html'),
-        tourDetails: resolve(__dirname, 'tours/details.html'),
-        booking: resolve(__dirname, 'booking/index.html'),
-        bookingConfirmation: resolve(__dirname, 'booking/confirmation.html'),
-        about: resolve(__dirname, 'about/index.html'),
-        contact: resolve(__dirname, 'contact/index.html'),
-        login: resolve(__dirname, 'login/index.html'),
-        dashboard: resolve(__dirname, 'dashboard/index.html'),
-        dashboardTours: resolve(__dirname, 'dashboard/tours/index.html'),
-        dashboardBookings: resolve(__dirname, 'dashboard/bookings/index.html'),
-        dashboardGallery: resolve(__dirname, 'dashboard/gallery/index.html'),
-        dashboardSettings: resolve(__dirname, 'dashboard/settings/index.html')
+        main: 'index.html',
+        tours: 'tours/index.html',
+        tourDetails: 'tours/details.html',
+        booking: 'booking/index.html',
+        bookingConfirmation: 'booking/confirmation.html',
+        about: 'about/index.html',
+        contact: 'contact/index.html',
+        login: 'login/index.html',
+        dashboard: 'dashboard/index.html',
+        dashboardTours: 'dashboard/tours/index.html',
+        dashboardBookings: 'dashboard/bookings/index.html',
+        dashboardGallery: 'dashboard/gallery/index.html',
+        dashboardSettings: 'dashboard/settings/index.html'
       }
     }
   },
