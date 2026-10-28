@@ -1,4 +1,4 @@
-import { config } from './config.js';
+import { loadConfig } from './config.js';
 
 let firebaseApp = null;
 let authInstance = null;
@@ -8,16 +8,18 @@ let authStateListeners = new Set();
 async function loadFirebase() {
   if (authModule) return authModule;
 
+  const firebaseConfig = await loadConfig();
+  
+  if (!firebaseConfig || !firebaseConfig.apiKey) {
+    throw new Error('Firebase client configuration is missing from server.');
+  }
+
   const [appMod, authMod] = await Promise.all([
     import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js'),
     import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js')
   ]);
 
-  if (!config.firebase.apiKey || !config.firebase.projectId) {
-    throw new Error('Firebase client configuration is missing.');
-  }
-
-  firebaseApp = appMod.initializeApp(config.firebase);
+  firebaseApp = appMod.initializeApp(firebaseConfig);
   authInstance = authMod.getAuth(firebaseApp);
   authModule = { app: firebaseApp, auth: authInstance, ...authMod };
 
