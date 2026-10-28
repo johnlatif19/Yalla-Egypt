@@ -147,6 +147,15 @@ function escapeAttr(value) {
   return escapeHtml(value);
 }
 
+function hideIntro() {
+  const splash = document.getElementById('intro-splash');
+  if (splash) {
+    setTimeout(() => {
+      splash.classList.add('is-hidden');
+    }, 3500);
+  }
+}
+
 async function loadHome() {
   try {
     const [toursData, galleryData, settings] = await Promise.all([
@@ -166,6 +175,7 @@ async function loadHome() {
 }
 
 async function init() {
+  hideIntro();
   initTheme();
   initI18n();
   mountHeader();
