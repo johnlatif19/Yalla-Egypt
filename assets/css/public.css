@@ -706,16 +706,15 @@ html[lang="ar"] .booking-card__price {
   }
 }
 
-/* Intro Splash Screen */
 .intro-splash {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background-color: #0A1A26;
+  background-color: #050505;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
 }
 
 .intro-splash.is-hidden {
@@ -723,30 +722,120 @@ html[lang="ar"] .booking-card__price {
   visibility: hidden;
 }
 
-.intro-splash__bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('/assets/images/hero-bg.webp');
-  background-size: cover;
-  background-position: center;
+.intro-splash__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  width: 100%;
+  padding: var(--space-4);
+}
+
+.intro-splash__drawing {
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  filter: drop-shadow(0 0 8px #29A6A0) drop-shadow(0 0 15px #29A6A0);
+}
+
+.draw-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 70px;
+  font-weight: 600;
+  fill: transparent;
+  stroke: #29A6A0;
+  stroke-width: 1.5;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawText 3.5s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+html[lang="ar"] .draw-text {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-size: 60px;
+}
+
+@keyframes drawText {
+  0% {
+    stroke-dashoffset: 1000;
+    fill: transparent;
+  }
+  70% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #29A6A0;
+  }
+}
+
+.flag-red {
+  stroke: #FF3333;
+  filter: drop-shadow(0 0 6px #FF3333);
+  animation: fillRed 2s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+.flag-white {
+  stroke: #FFFFFF;
+  filter: drop-shadow(0 0 6px #FFFFFF);
+  animation: fillWhite 2s ease-in-out forwards;
+  animation-delay: 0.8s;
+}
+
+.flag-black {
+  stroke: #555555;
+  filter: drop-shadow(0 0 6px #555555);
+  animation: fillBlack 2s ease-in-out forwards;
+  animation-delay: 1.1s;
+}
+
+/* النسر: صورة SVG، تعتمد على الشفافية للتلاشي، مع توهج ذهبي */
+.flag-eagle {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9)) 
+          drop-shadow(0 0 16px rgba(255, 215, 0, 0.5));
   opacity: 0;
-  animation: splashBgFade 3.5s ease-out forwards;
+  animation: fadeInEagle 1.8s ease-out forwards;
+  animation-delay: 1.4s;
 }
 
-@keyframes splashBgFade {
-  0% { opacity: 0; transform: scale(1.05); }
-  30% { opacity: 0.7; }
-  100% { opacity: 0.4; transform: scale(1); }
+@keyframes fadeInEagle {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-.intro-splash__logo {
-  position: relative;
-  z-index: 2;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: splashLogoFade 1.5s ease-out 0.5s forwards;
+@keyframes fillRed {
+  0% { fill: transparent; }
+  100% { fill: rgba(255, 51, 51, 0.4); }
 }
 
-@keyframes splashLogoFade {
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fillWhite {
+  0% { fill: transparent; }
+  100% { fill: rgba(255, 255, 255, 0.2); }
+}
+
+@keyframes fillBlack {
+  0% { fill: transparent; }
+  100% { fill: rgba(0, 0, 0, 0.9); }
+}
+
+.draw-flag rect,
+.draw-flag path,
+.draw-flag circle {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: drawStroke 2.5s ease-in-out forwards;
+}
+
+@keyframes drawStroke {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 480px) {
+  .draw-text {
+    font-size: 50px;
+  }
 }
