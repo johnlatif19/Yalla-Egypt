@@ -7,10 +7,16 @@ export async function initGuard() {
   if (guardActive) return currentUser;
   guardActive = true;
 
+  console.log('[guard] starting auth check...');
   currentUser = await requireAdmin();
+  console.log('[guard] user =', currentUser?.email || null);
+
   if (!currentUser) {
+    console.warn('[guard] no user, redirecting to /login');
     return null;
   }
+
+  console.log('[guard] user is admin, dashboard allowed');
 
   onAuthChange(async (user) => {
     if (!user) {
