@@ -7,8 +7,13 @@ export async function loadConfig() {
     const res = await fetch('/api/config');
     if (!res.ok) throw new Error('Network response was not ok');
     const data = await res.json();
-    firebaseConfig = data.firebase;
-    return firebaseConfig;
+    
+    // لو السيرفر رجع البيانات صح
+    if (data && data.firebase) {
+      firebaseConfig = data.firebase;
+      return firebaseConfig;
+    }
+    return null;
   } catch (error) {
     console.error('Failed to load Firebase config from server', error);
     return null;
