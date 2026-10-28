@@ -2,7 +2,6 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "outputDirectory": ".",
   "rewrites": [
     {
       "source": "/tours/:slug",
@@ -11,17 +10,6 @@
     {
       "source": "/api/(.*)",
       "destination": "/api/[...path].js"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
     }
   ]
 }
