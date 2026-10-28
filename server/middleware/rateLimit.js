@@ -6,7 +6,7 @@ const limiterOptions = {
   max: env.RATE_LIMIT_MAX,
   standardHeaders: true,
   legacyHeaders: false,
-  validate: { xForwardedForHeader: false, trustProxy: false }
+  validate: false // ده بيمنع الـ ValidationError بتاع X-Forwarded-For
 };
 
 export const publicLimiter = rateLimit({
