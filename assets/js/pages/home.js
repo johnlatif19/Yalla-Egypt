@@ -152,7 +152,7 @@ function hideIntro() {
   if (splash) {
     setTimeout(() => {
       splash.classList.add('is-hidden');
-    }, 3500);
+    }, 4200);
   }
 }
 
