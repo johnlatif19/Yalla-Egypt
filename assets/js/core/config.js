@@ -1,15 +1,22 @@
-const firebaseConfig = {
-  apiKey: window.env?.FIREBASE_API_KEY || '',
-  authDomain: window.env?.FIREBASE_AUTH_DOMAIN || '',
-  projectId: window.env?.FIREBASE_PROJECT_ID || '',
-  storageBucket: window.env?.FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: window.env?.FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: window.env?.FIREBASE_APP_ID || ''
-};
+let firebaseConfig = null;
+
+export async function loadConfig() {
+  if (firebaseConfig) return firebaseConfig;
+  
+  try {
+    const res = await fetch('/api/config');
+    if (!res.ok) throw new Error('Network response was not ok');
+    const data = await res.json();
+    firebaseConfig = data.firebase;
+    return firebaseConfig;
+  } catch (error) {
+    console.error('Failed to load Firebase config from server', error);
+    return null;
+  }
+}
 
 export const config = {
   apiBase: '/api',
-  firebase: firebaseConfig,
   storageKeys: {
     theme: 'yalla-theme',
     lang: 'yalla-lang',
