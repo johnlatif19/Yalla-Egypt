@@ -1,0 +1,30 @@
+[dir="rtl"] .site-header__inner,
+[dir="rtl"] .nav-list,
+[dir="rtl"] .footer-grid,
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .text-left { text-align: right; }
+[dir="rtl"] .text-right { text-align: left; }
+
+[dir="rtl"] .icon-arrow {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] input[type="email"],
+[dir="rtl"] input[type="tel"],
+[dir="rtl"] input[type="url"],
+[dir="rtl"] input[type="number"] {
+  direction: ltr;
+  text-align: right;
+}
+
+[dir="rtl"] .badge::before {
+  margin-left: 0;
+  margin-right: var(--space-1);
+}
+
+[dir="rtl"] .breadcrumb__separator {
+  transform: scaleX(-1);
+}

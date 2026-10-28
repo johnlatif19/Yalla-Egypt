@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFF9EF">
+
+  <title>About the Guide — Yalla Egypt</title>
+  <meta name="description" content="Meet your personal Egyptian tour guide. Learn about the person behind Yalla Egypt, the languages spoken, and the approach to guiding travelers through Egypt.">
+  <link rel="canonical" href="/about">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About the Guide — Yalla Egypt">
+  <meta property="og:description" content="Meet your personal Egyptian tour guide behind Yalla Egypt.">
+  <meta property="og:image" content="/assets/images/logo.webp">
+  <meta property="og:url" content="/about">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/webp" href="/assets/images/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/public.css">
+  <link rel="stylesheet" href="/assets/css/rtl.css">
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui/theme.js';
+    initTheme();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link" data-i18n="a11y.skipToContent">Skip to main content</a>
+
+  <div data-header></div>
+
+  <main id="main" class="main-content">
+    <header class="page-header">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="/" data-i18n="nav.home">Home</a></li>
+            <li aria-hidden="true" class="breadcrumb__separator">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </li>
+            <li aria-current="page" data-i18n="nav.about">About</li>
+          </ol>
+        </nav>
+        <h1 data-i18n="about.pageTitle">About the guide</h1>
+        <p data-i18n="about.pageLead">The person behind Yalla Egypt, and the way tours are designed and led.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="guide-section reveal" id="guide-section">
+          <div class="guide-photo" id="guide-photo-wrapper">
+            <div class="skeleton" style="width: 100%; height: 100%;"></div>
+          </div>
+
+          <div>
+            <span class="eyebrow" data-i18n="about.eyebrow">The guide</span>
+            <h2 id="guide-name" data-i18n="about.nameFallback">Your personal tour guide</h2>
+            <div id="guide-bio" class="text-muted" style="margin-top: var(--space-4); line-height: var(--lh-relaxed);">
+              <div class="skeleton" style="height: 16px; width: 100%; margin-bottom: 8px;"></div>
+              <div class="skeleton" style="height: 16px; width: 92%; margin-bottom: 8px;"></div>
+              <div class="skeleton" style="height: 16px; width: 78%;"></div>
+            </div>
+
+            <div id="guide-languages-wrapper" style="margin-top: var(--space-6);" hidden>
+              <h3 style="font-size: var(--fs-md); margin-bottom: var(--space-3);" data-i18n="about.languagesTitle">Languages spoken</h3>
+              <div class="guide-languages" id="guide-languages"></div>
+            </div>
+
+            <div id="guide-specialties-wrapper" style="margin-top: var(--space-6);" hidden>
+              <h3 style="font-size: var(--fs-md); margin-bottom: var(--space-3);" data-i18n="about.specialtiesTitle">Specialties</h3>
+              <div class="guide-languages" id="guide-specialties"></div>
+            </div>
+
+            <div style="margin-top: var(--space-7); display: flex; flex-wrap: wrap; gap: var(--space-3);">
+              <a href="/tours" class="btn btn--primary" data-i18n="about.browseTours">Browse tours</a>
+              <a href="/contact" class="btn btn--outline" data-i18n="about.contactGuide">Contact the guide</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--color-bg-subtle);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow" data-i18n="about.approachEyebrow">How tours are led</span>
+          <h2 data-i18n="about.approachTitle">A considered approach to guiding</h2>
+          <p data-i18n="about.approachLead">Every tour is planned around the traveler, not around a fixed script.</p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-item reveal">
+            <div class="why-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="40" height="40"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 class="why-item__title" data-i18n="about.approach1Title">Personal pace</h3>
+            <p class="why-item__desc" data-i18n="about.approach1Desc">Time is adjusted to what you actually want to see. If a site deserves longer, it gets longer.</p>
+          </article>
+
+          <article class="why-item reveal">
+            <div class="why-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="40" height="40"><path d="M3 12h18"/><path d="M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
+            </div>
+            <h3 class="why-item__title" data-i18n="about.approach2Title">Real context</h3>
+            <p class="why-item__desc" data-i18n="about.approach2Desc">History is explained clearly and honestly, without exaggeration or invented stories.</p>
+          </article>
+
+          <article class="why-item reveal">
+            <div class="why-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="40" height="40"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            </div>
+            <h3 class="why-item__title" data-i18n="about.approach3Title">Direct contact</h3>
+            <p class="why-item__desc" data-i18n="about.approach3Desc">Bookings and questions are handled personally. No middle layer, no call center.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band reveal">
+          <h2 data-i18n="about.ctaTitle">Ready to plan a tour?</h2>
+          <p data-i18n="about.ctaLead">Send a booking request and we will confirm availability directly.</p>
+          <a href="/booking" class="btn btn--accent btn--lg" data-i18n="about.ctaButton">Start a booking</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-footer></div>
+
+  <script type="module" src="/assets/js/pages/about.js"></script>
+</body>
+</html>

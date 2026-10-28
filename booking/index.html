@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFF9EF">
+
+  <title>Booking Request — Yalla Egypt</title>
+  <meta name="description" content="Send a booking request for a tour with Yalla Egypt. Choose your tour, date, and party size. The guide will confirm availability directly.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="/booking">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Booking Request — Yalla Egypt">
+  <meta property="og:description" content="Send a booking request for a tour with Yalla Egypt.">
+  <meta property="og:image" content="/assets/images/logo.webp">
+  <meta property="og:url" content="/booking">
+
+  <link rel="icon" type="image/webp" href="/assets/images/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/public.css">
+  <link rel="stylesheet" href="/assets/css/rtl.css">
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui/theme.js';
+    initTheme();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link" data-i18n="a11y.skipToContent">Skip to main content</a>
+
+  <div data-header></div>
+
+  <main id="main" class="main-content">
+    <header class="page-header">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="/" data-i18n="nav.home">Home</a></li>
+            <li aria-hidden="true" class="breadcrumb__separator">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </li>
+            <li aria-current="page" data-i18n="booking.pageTitle">Booking request</li>
+          </ol>
+        </nav>
+        <h1 data-i18n="booking.pageTitle">Booking request</h1>
+        <p data-i18n="booking.pageLead">Fill in the details below. The guide will confirm availability manually and contact you directly.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container container-narrow">
+
+        <div id="booking-alert" role="alert" hidden></div>
+
+        <div id="booking-summary" class="booking-summary" hidden>
+          <div class="booking-summary__row">
+            <span class="text-muted" data-i18n="booking.selectedTour">Selected tour</span>
+            <strong id="summary-tour-title">—</strong>
+          </div>
+          <div class="booking-summary__row">
+            <span class="text-muted" data-i18n="booking.duration">Duration</span>
+            <span id="summary-tour-duration">—</span>
+          </div>
+          <div class="booking-summary__row" id="summary-price-row" hidden>
+            <span class="text-muted" data-i18n="booking.price">Price</span>
+            <span id="summary-tour-price">—</span>
+          </div>
+        </div>
+
+        <form id="booking-form" class="booking-form" novalidate>
+          <div class="form-group">
+            <label for="tour" class="form-label form-label--required" data-i18n="booking.tourLabel">Tour</label>
+            <select id="tour" name="tour" class="form-select" required aria-describedby="tour-help">
+              <option value="" data-i18n="booking.tourPlaceholder">Select a tour</option>
+            </select>
+            <p class="form-help" id="tour-help" data-i18n="booking.tourHelp">Choose the tour you would like to book.</p>
+            <p class="form-error" id="tour-error" hidden></p>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label for="date" class="form-label form-label--required" data-i18n="booking.dateLabel">Preferred date</label>
+              <input type="date" id="date" name="date" class="form-input" required min="" aria-describedby="date-help">
+              <p class="form-help" id="date-help" data-i18n="booking.dateHelp">Requests are subject to availability.</p>
+              <p class="form-error" id="date-error" hidden></p>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMethod" class="form-label form-label--required" data-i18n="booking.contactMethodLabel">Preferred contact method</label>
+              <select id="contactMethod" name="contactMethod" class="form-select" required>
+                <option value="email" data-i18n="booking.contactEmail">Email</option>
+                <option value="phone" data-i18n="booking.contactPhone">Phone</option>
+                <option value="whatsapp" data-i18n="booking.contactWhatsapp">WhatsApp</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row form-row--3">
+            <div class="form-group">
+              <label for="adults" class="form-label form-label--required" data-i18n="booking.adultsLabel">Adults</label>
+              <input type="number" id="adults" name="adults" class="form-input" min="1" max="30" value="1" required aria-describedby="adults-error">
+              <p class="form-error" id="adults-error" hidden></p>
+            </div>
+
+            <div class="form-group">
+              <label for="children" class="form-label" data-i18n="booking.childrenLabel">Children</label>
+              <input type="number" id="children" name="children" class="form-input" min="0" max="20" value="0" aria-describedby="children-help">
+              <p class="form-help" id="children-help" data-i18n="booking.childrenHelp">Ages 2 to 12.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="language" class="form-label form-label--required" data-i18n="booking.languageLabel">Preferred language</label>
+              <select id="language" name="language" class="form-select" required>
+                <option value="en" data-i18n="booking.langEn">English</option>
+                <option value="ar" data-i18n="booking.langAr">Arabic</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label for="name" class="form-label form-label--required" data-i18n="booking.nameLabel">Full name</label>
+              <input type="text" id="name" name="name" class="form-input" required autocomplete="name" aria-describedby="name-error" maxlength="120">
+              <p class="form-error" id="name-error" hidden></p>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label form-label--required" data-i18n="booking.emailLabel">Email address</label>
+              <input type="email" id="email" name="email" class="form-input" required autocomplete="email" aria-describedby="email-error" maxlength="180">
+              <p class="form-error" id="email-error" hidden></p>
+            </div>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label for="phone" class="form-label form-label--required" data-i18n="booking.phoneLabel">Phone number</label>
+              <input type="tel" id="phone" name="phone" class="form-input" required autocomplete="tel" aria-describedby="phone-help phone-error" maxlength="32" placeholder="+20 100 000 0000">
+              <p class="form-help" id="phone-help" data-i18n="booking.phoneHelp">Include your country code.</p>
+              <p class="form-error" id="phone-error" hidden></p>
+            </div>
+
+            <div class="form-group">
+              <label for="pickup" class="form-label" data-i18n="booking.pickupLabel">Pickup location</label>
+              <input type="text" id="pickup" name="pickup" class="form-input" autocomplete="street-address" maxlength="180" placeholder="">
+              <p class="form-help" data-i18n="booking.pickupHelp">Optional. Hotel name or address.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes" class="form-label" data-i18n="booking.notesLabel">Additional notes</label>
+            <textarea id="notes" name="notes" class="form-textarea" maxlength="1000" aria-describedby="notes-help"></textarea>
+            <p class="form-help" id="notes-help" data-i18n="booking.notesHelp">Anything the guide should know in advance.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox" for="consent">
+              <input type="checkbox" id="consent" name="consent" required aria-describedby="consent-error">
+              <span data-i18n="booking.consentLabel">I agree to the processing of my details for the purpose of handling this booking request.</span>
+            </label>
+            <p class="form-error" id="consent-error" hidden></p>
+          </div>
+
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <p class="text-muted" style="font-size: var(--fs-xs);" data-i18n="booking.noPaymentNote">No payment is collected on this website. The guide will confirm the booking manually.</p>
+            <button type="submit" id="submit-btn" class="btn btn--primary btn--lg">
+              <span id="submit-btn-label" data-i18n="booking.submitButton">Send booking request</span>
+              <span id="submit-btn-spinner" class="spinner" hidden></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div data-footer></div>
+
+  <script type="module" src="/assets/js/pages/booking.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFF9EF">
+
+  <title>Tours — Yalla Egypt</title>
+  <meta name="description" content="Browse tours across Egypt led personally by an Egyptian guide. Filter by category, duration, or price.">
+  <link rel="canonical" href="/tours">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tours — Yalla Egypt">
+  <meta property="og:description" content="Browse tours across Egypt led personally by an Egyptian guide.">
+  <meta property="og:image" content="/assets/images/logo.webp">
+  <meta property="og:url" content="/tours">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/webp" href="/assets/images/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/public.css">
+  <link rel="stylesheet" href="/assets/css/rtl.css">
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui/theme.js';
+    initTheme();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link" data-i18n="a11y.skipToContent">Skip to main content</a>
+
+  <div data-header></div>
+
+  <main id="main" class="main-content">
+    <header class="page-header">
+      <div class="container">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb">
+            <li><a href="/" data-i18n="nav.home">Home</a></li>
+            <li aria-hidden="true" class="breadcrumb__separator">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </li>
+            <li aria-current="page" data-i18n="nav.tours">Tours</li>
+          </ol>
+        </nav>
+        <h1 data-i18n="tours.pageTitle">Tours</h1>
+        <p data-i18n="tours.pageLead">Browse tours across Egypt. Filter by category, duration, or price.</p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="tours-toolbar" role="search">
+          <div class="tours-toolbar__search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input
+              type="search"
+              id="tours-search"
+              class="form-input"
+              data-i18n-placeholder="tours.searchPlaceholder"
+              placeholder="Search tours by name"
+              aria-label="Search tours"
+            >
+          </div>
+
+          <div class="tours-toolbar__filters">
+            <select id="tours-category" class="form-select" aria-label="Filter by category">
+              <option value="" data-i18n="common.all">All</option>
+              <option value="historical" data-i18n="tours.categoryHistorical">Historical</option>
+              <option value="cultural" data-i18n="tours.categoryCultural">Cultural</option>
+              <option value="nile" data-i18n="tours.categoryNile">Nile</option>
+              <option value="food" data-i18n="tours.categoryFood">Food</option>
+              <option value="custom" data-i18n="tours.categoryCustom">Custom</option>
+            </select>
+
+            <select id="tours-duration" class="form-select" aria-label="Filter by duration">
+              <option value="" data-i18n="common.all">All</option>
+              <option value="half-day" data-i18n="tours.durationHalfDay">Half day</option>
+              <option value="full-day" data-i18n="tours.durationFullDay">Full day</option>
+              <option value="multi-day" data-i18n="tours.durationMultiDay">Multi-day</option>
+            </select>
+
+            <select id="tours-sort" class="form-select" aria-label="Sort tours">
+              <option value="newest" data-i18n="tours.sortNewest">Newest first</option>
+              <option value="price-low" data-i18n="tours.sortPriceLow">Price: low to high</option>
+              <option value="price-high" data-i18n="tours.sortPriceHigh">Price: high to low</option>
+              <option value="title" data-i18n="tours.sortTitle">Title (A–Z)</option>
+            </select>
+
+            <button type="button" id="tours-clear-filters" class="btn btn--ghost btn--sm" data-i18n="tours.clearFilters">Clear filters</button>
+          </div>
+        </div>
+
+        <div id="tours-loading" class="grid grid-3" hidden>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+        </div>
+
+        <div id="tours-grid" class="tours-grid"></div>
+
+        <div id="tours-empty" class="empty-state" hidden>
+          <h3 data-i18n="tours.emptyTitle">No tours match your filters</h3>
+          <p data-i18n="tours.emptyLead">Try clearing the search or filters.</p>
+        </div>
+
+        <div class="flex justify-center" style="margin-top: var(--space-7);">
+          <button type="button" id="tours-load-more" class="btn btn--outline btn--lg" hidden data-i18n="tours.loadMore">Load more tours</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div data-footer></div>
+
+  <script type="module" src="/assets/js/pages/tours.js"></script>
+</body>
+</html>

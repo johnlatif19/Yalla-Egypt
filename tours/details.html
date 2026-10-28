@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFF9EF">
+
+  <title>Tour — Yalla Egypt</title>
+  <meta name="description" content="Tour details, itinerary, and booking request — Yalla Egypt.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/tours">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Tour — Yalla Egypt">
+  <meta property="og:description" content="Tour details, itinerary, and booking request — Yalla Egypt.">
+  <meta property="og:image" content="/assets/images/logo.webp">
+
+  <link rel="icon" type="image/webp" href="/assets/images/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/public.css">
+  <link rel="stylesheet" href="/assets/css/rtl.css">
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui/theme.js';
+    initTheme();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link" data-i18n="a11y.skipToContent">Skip to main content</a>
+
+  <div data-header></div>
+
+  <main id="main" class="main-content">
+
+    <div id="tour-loading" class="section">
+      <div class="container">
+        <div class="skeleton" style="aspect-ratio: 16/9; margin-bottom: var(--space-6);"></div>
+        <div class="skeleton" style="height: 32px; width: 60%; margin-bottom: var(--space-3);"></div>
+        <div class="skeleton" style="height: 18px; width: 80%;"></div>
+      </div>
+    </div>
+
+    <div id="tour-main" hidden>
+
+      <header class="page-header">
+        <div class="container">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+              <li><a href="/" data-i18n="nav.home">Home</a></li>
+              <li aria-hidden="true" class="breadcrumb__separator">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </li>
+              <li><a href="/tours" data-i18n="nav.tours">Tours</a></li>
+              <li aria-hidden="true" class="breadcrumb__separator">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </li>
+              <li aria-current="page" id="tour-breadcrumb-title">—</li>
+            </ol>
+          </nav>
+          <h1 id="tour-title">—</h1>
+          <p id="tour-short-desc" class="text-muted"></p>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="container">
+          <div class="tour-details">
+
+            <div>
+
+              <div class="tour-details__hero reveal">
+                <img id="tour-hero-img" src="/assets/images/logo.webp" alt="" loading="eager" decoding="async">
+              </div>
+
+              <section id="tour-full-desc-section">
+                <h2 style="font-size: var(--fs-xl); margin-bottom: var(--space-4);" data-i18n="tourDetails.overview">Overview</h2>
+                <div id="tour-full-desc" class="text-muted" style="line-height: var(--lh-relaxed);"></div>
+              </section>
+
+              <section id="tour-itinerary-section" class="section" style="padding-block: var(--space-6);" hidden>
+                <h2 style="font-size: var(--fs-xl); margin-bottom: var(--space-4);" data-i18n="tourDetails.itinerary">Itinerary</h2>
+                <ol class="itinerary" id="tour-itinerary-list"></ol>
+              </section>
+
+              <div class="form-row form-row--2" style="gap: var(--space-6); margin-top: var(--space-6);">
+                <section id="tour-included-section" hidden>
+                  <h2 style="font-size: var(--fs-lg); margin-bottom: var(--space-3);" data-i18n="tourDetails.included">What is included</h2>
+                  <ul id="tour-included-list" style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--fs-sm); color: var(--color-text-muted);"></ul>
+                </section>
+
+                <section id="tour-excluded-section" hidden>
+                  <h2 style="font-size: var(--fs-lg); margin-bottom: var(--space-3);" data-i18n="tourDetails.excluded">What is not included</h2>
+                  <ul id="tour-excluded-list" style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--fs-sm); color: var(--color-text-muted);"></ul>
+                </section>
+              </div>
+
+              <section id="tour-meeting-section" class="section" style="padding-block: var(--space-6);" hidden>
+                <h2 style="font-size: var(--fs-lg); margin-bottom: var(--space-3);" data-i18n="tourDetails.meetingPoint">Meeting point</h2>
+                <p id="tour-meeting-point" class="text-muted" style="font-size: var(--fs-sm);"></p>
+              </section>
+
+              <section id="tour-availability-section" class="section" style="padding-block: var(--space-6);" hidden>
+                <h2 style="font-size: var(--fs-lg); margin-bottom: var(--space-3);" data-i18n="tourDetails.availability">Availability</h2>
+                <p id="tour-availability" class="text-muted" style="font-size: var(--fs-sm);"></p>
+              </section>
+
+              <section id="tour-cancellation-section" class="section" style="padding-block: var(--space-6);" hidden>
+                <h2 style="font-size: var(--fs-lg); margin-bottom: var(--space-3);" data-i18n="tourDetails.cancellation">Cancellation policy</h2>
+                <p id="tour-cancellation" class="text-muted" style="font-size: var(--fs-sm);"></p>
+              </section>
+
+              <section id="tour-gallery-section" class="section" style="padding-block: var(--space-6);" hidden>
+                <h2 style="font-size: var(--fs-lg); margin-bottom: var(--space-3);" data-i18n="tourDetails.gallery">Gallery</h2>
+                <div class="tour-gallery" id="tour-gallery"></div>
+              </section>
+
+              <section id="tour-faq-section" class="section" style="padding-block: var(--space-6);" hidden>
+                <h2 style="font-size: var(--fs-lg); margin-bottom: var(--space-4);" data-i18n="tourDetails.faq">Frequently asked questions</h2>
+                <div class="faq" id="tour-faq-list"></div>
+              </section>
+
+            </div>
+
+            <aside class="tour-sidebar">
+              <div class="booking-card">
+                <div class="booking-card__price" id="tour-price">—</div>
+
+                <ul class="tour-info-list" id="tour-info-list" style="margin-bottom: var(--space-5);"></ul>
+
+                <a href="/booking" id="tour-book-btn" class="btn btn--primary btn--block btn--lg" data-i18n="tourDetails.bookButton">Book this tour</a>
+                <a href="/contact" class="btn btn--ghost btn--block" style="margin-top: var(--space-3);" data-i18n="tourDetails.contactGuide">Ask about this tour</a>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <div data-footer></div>
+
+  <script type="module" src="/assets/js/pages/tour-details.js"></script>
+</body>
+</html>

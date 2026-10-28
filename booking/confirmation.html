@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFF9EF">
+
+  <title>Booking Request Received — Yalla Egypt</title>
+  <meta name="description" content="Your booking request has been received. The guide will confirm availability and contact you directly.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="/booking/confirmation">
+
+  <link rel="icon" type="image/webp" href="/assets/images/logo.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/public.css">
+  <link rel="stylesheet" href="/assets/css/rtl.css">
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui/theme.js';
+    initTheme();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link" data-i18n="a11y.skipToContent">Skip to main content</a>
+
+  <div data-header></div>
+
+  <main id="main" class="main-content">
+    <div class="container">
+      <div class="booking-confirmation" id="confirmation-card">
+        <div class="booking-confirmation__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+        </div>
+
+        <h1 data-i18n="confirmation.title">Booking request received</h1>
+        <p class="text-muted" style="margin-top: var(--space-3);" data-i18n="confirmation.lead">
+          Thank you. Your request has been recorded and is now pending confirmation by the guide.
+        </p>
+
+        <div id="reference-wrapper" hidden>
+          <p style="margin-top: var(--space-5); font-size: var(--fs-sm); color: var(--color-text-muted);" data-i18n="confirmation.referenceLabel">
+            Your booking reference
+          </p>
+          <div class="booking-reference" id="reference-value">—</div>
+        </div>
+
+        <p style="margin-top: var(--space-5); font-size: var(--fs-sm); color: var(--color-text-muted);" data-i18n="confirmation.pendingNote">
+          The booking is not confirmed yet. The guide will review the request and contact you using the details you provided.
+        </p>
+
+        <div id="confirmation-details" style="margin-top: var(--space-6); text-align: start;" hidden>
+          <div class="booking-summary">
+            <div class="booking-summary__row">
+              <span class="text-muted" data-i18n="confirmation.tourLabel">Tour</span>
+              <strong id="detail-tour">—</strong>
+            </div>
+            <div class="booking-summary__row">
+              <span class="text-muted" data-i18n="confirmation.dateLabel">Preferred date</span>
+              <span id="detail-date">—</span>
+            </div>
+            <div class="booking-summary__row">
+              <span class="text-muted" data-i18n="confirmation.partyLabel">Party size</span>
+              <span id="detail-party">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
+          <a href="/tours" class="btn btn--primary" data-i18n="confirmation.backToTours">Browse more tours</a>
+          <a href="/" class="btn btn--outline" data-i18n="confirmation.backHome">Back to home</a>
+        </div>
+      </div>
+
+      <div id="confirmation-empty" class="empty-state" hidden>
+        <h3 data-i18n="confirmation.emptyTitle">No booking details to display</h3>
+        <p data-i18n="confirmation.emptyLead">This page shows a summary after a booking request is submitted.</p>
+        <a href="/booking" class="btn btn--primary" style="margin-top: var(--space-4);" data-i18n="confirmation.startBooking">Start a booking</a>
+      </div>
+    </div>
+  </main>
+
+  <div data-footer></div>
+
+  <script type="module" src="/assets/js/pages/booking-confirmation.js"></script>
+</body>
+</html>
